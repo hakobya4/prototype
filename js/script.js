@@ -20,7 +20,11 @@ let pokemonRepository =(function(){
     //functions to add to the pokemon array and 
     return {
         add: function(pokemon) {
-          pokemonList.push(pokemon);
+            if (typeof pokemon=== "object" && Object.keys(pokemon)!==['name','height','type']){
+                pokemonList.push(pokemon);
+            }else{
+                console.log("Please enter an array in this format: {name: pokemon, height: number, type: types} ")
+            }
         },
         getAll: function() {
           return pokemonList;
