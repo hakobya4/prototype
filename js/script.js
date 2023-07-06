@@ -28,14 +28,19 @@ let pokemonRepository =(function(){
         },
         getAll: function() {
           return pokemonList;
+        },
+        findPokemon: function(pokemon){
+            pokemonList.forEach(function(pokemonItem){
+                pokemonItem.filter(pokemonItems => pokemonItems === pokemon)
+            })
         }
       };
 })();
 
 
 //loops over the pokemonlist array and prints out  the name and height of each porkemon
-pokemonRepository.getAll().forEach(function(pokemon){
-    document.write(pokemon.name + ' (height: ' +pokemon.height + ') ')
+pokemonRepository.getAll().forEach(function(pokemonItem){
+    document.write(pokemonItem.name + ' (height: ' +pokemonItem.height + ') ')
     //if pokemon's height is bigger than 20 it is big
     if (pokemon.height> 20){
         document.write('- Wow thats big! ')
