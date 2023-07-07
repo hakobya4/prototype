@@ -17,8 +17,17 @@ let pokemonRepository =(function(){
         },
     ];
 
-    //functions to add to the pokemon array and 
+    function showDetails(pokemon){
+        console.log(pokemon.name)
+    }
+    //function to add an event listener to show details of the pokemon when the button clicked
+    function clickEventButton(button, pokemon){
+        button.addEventListener('click', function () {
+            showDetails(pokemon);
+        })
+    }
     return {
+         //functions to add to the pokemon array
         add: function(pokemon) {
             if (typeof pokemon=== "object" && Object.keys(pokemon)!==['name','height','type']){
                 pokemonList.push(pokemon);
@@ -26,24 +35,32 @@ let pokemonRepository =(function(){
                 console.log("Please enter an array in this format: {name: pokemon, height: number, type: types} ")
             }
         },
+        
+        //function selects the pokemon array and creates a list of buttons of each pokemon name
+        addListItem: function(pokemon){
+            let pokemonlist = document.querySelector('.pokemon-list');
+            let listItem = document.createElement('li');
+            let button = document.createElement('button');
+            button.innerText = pokemon.name;
+            button.classList.add('pokemonButton');
+            listItem.appendChild(button);
+            pokemonlist.appendChild(listItem);
+            // adds an event listener to each button created that show additional detail
+            clickEventButton(button, pokemon)
+        },
+        
         getAll: function() {
           return pokemonList;
         },
         findPokemon: function(pokemon){
             pokemonList.forEach(function(pokemonItem){
-                pokemonItem.filter(pokemonItems => pokemonItems === pokemon)
+                pokemonItem.filter(pokemonItems => pokemonItems.name === pokemon)
             })
         }
       };
 })();
 
-
-//loops over the pokemonlist array and prints out  the name and height of each porkemon
+//calls addlistItem function from the IIFE 
 pokemonRepository.getAll().forEach(function(pokemonItem){
-    document.write(pokemonItem.name + ' (height: ' +pokemonItem.height + ') ')
-    //if pokemon's height is bigger than 20 it is big
-    if (pokemon.height> 20){
-        document.write('- Wow thats big! ')
-    }
-    document.write('<br>')
+    pokemonRepository.addListItem(pokemonItem)
 })
