@@ -12,7 +12,7 @@ let pokemonRepository = (function () {
         return fetch(url).then(function (response) {
           return response.json();
         }).then(function (details) {
-          // Now we add the details to the item
+          // Adds the details to the item
           item.imageUrl = details.sprites.front_default;
           item.height = details.height;
           item.types = details.types;
@@ -20,10 +20,63 @@ let pokemonRepository = (function () {
           console.error(e);
         });
     }
+    //opens a modal to show pokemon name, height, picture
     function showDetails(pokemon) {
-        loadDetails(pokemon).then(function () {
-          console.log(pokemon);
-        });
+        
+      loadDetails(pokemon).then(function () {
+        showModal(pokemon);
+      });
+
+      let modalContainer = document.querySelector('#modal-container');
+  
+      function showModal(item) {
+        modalContainer.innerHTML = '';
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+
+        let titleElement = document.createElement('h1');
+        titleElement.innerText = item.name.toUpperCase();
+
+        let contentElement = document.createElement('p');
+        contentElement.innerText = "HEIGHT: " + pokemon.height;
+
+        let imageElement = document.createElement('img');
+        imageElement.src = pokemon.imageUrl;
+
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modal.appendChild(imageElement)
+        modalContainer.appendChild(modal);
+        modal.appendChild(closeButtonElement);
+            
+        modalContainer.classList.add('is-visible');
+      }
+
+      function hideModal() {
+        modalContainer.classList.remove('is-visible');
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+        hideModal();  
+        }
+      });
+  
+      modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+          hideModal();
+        }
+      });
+
+      document.querySelector('#show-modal').addEventListener('click', () => {
+        showModal(pokemon);
+      });
     }
     //function to add an event listener to show details of the pokemon when the button clicked
     function clickEventButton(button, pokemon){
