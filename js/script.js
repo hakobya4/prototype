@@ -73,17 +73,8 @@ let pokemonRepository = (function () {
           hideModal();
         }
       });
+    }
 
-      document.querySelector('#show-modal').addEventListener('click', () => {
-        showModal(pokemon);
-      });
-    }
-    //function to add an event listener to show details of the pokemon when the button clicked
-    function clickEventButton(button, pokemon){
-        button.addEventListener('click', function () {
-            showDetails(pokemon);
-        })
-    }
     return {
         
         //function selects the pokemon array and creates a list of buttons of each pokemon name
@@ -96,7 +87,9 @@ let pokemonRepository = (function () {
             listItem.appendChild(button);
             pokemonlist.appendChild(listItem);
             // adds an event listener to each button created that show additional detail
-            clickEventButton(button, pokemon)
+            button.addEventListener('click', function () {
+              showDetails(pokemon);
+          })
         },
         
         loadList: function(){
