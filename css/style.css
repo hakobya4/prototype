@@ -10,7 +10,7 @@ header {
     border-bottom: solid 2px rgb(0, 117, 8);
     background-color: rgb(255, 255, 255)!important;
 }
-.anahit_img{
+.pokedex{
     width: 250px;
 }
 .form-control {
@@ -19,8 +19,12 @@ header {
 }
 
 :root {
-    --main-bg-color: rgb(191, 254, 196);
+    --main-bg-color: #fdc447;
     --main-bg-color2: rgb(0, 80, 52);
+}
+
+.container-fluid{
+    background-color: var(--main-bg-color);
 }
 
 .form-control:hover {
@@ -48,7 +52,7 @@ header {
 }
 
 .pokemonButton{
-    background-color: #4CAF50;
+    background-color: var(--main-bg-color);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -61,11 +65,29 @@ header {
 
 .pokemonButton:hover{
     background-color: #ffffff;
-    box-shadow:inset 0px 0px 0px 3px #4CAF50;
-    color: #4CAF50;
+    box-shadow:inset 0px 0px 0px 3px var(--main-bg-color);
+    color: var(--main-bg-color);
 }
 
 .imgElement{
     width: 200px;
     height: 200px;
 }
+.flame-move{
+    opacity: 0;
+    animation: hideshow 0.5s ease infinite;
+    height: 100px;
+    scale: 0.3;
+}
+.flame{
+    opacity: 1;
+    animation: showhide 0.5s ease infinite;
+    scale: 0.3;}
+
+@keyframes hideshow {
+    0% { opacity: 0;
+        transform: scale(1.2); }
+    30% { opacity: 0.5; 
+        transform: scale(1);}
+    80% { opacity: 1; }
+  } 

@@ -15,10 +15,11 @@ let pokemonRepository = (function () {
       // Adds the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
-      item.types = details.types;
+      
     }).catch(function (e) {
       console.error(e);
     });
+    
   }
   //opens a modal to show pokemon name, height, picture
   function showDetails(pokemon) {
@@ -79,7 +80,7 @@ let pokemonRepository = (function () {
         json.results.forEach(function (item) {
           let pokemon = {
             name: item.name,
-            detailsUrl: item.url
+            detailsUrl: item.url,
           };
           add(pokemon);
         });
@@ -87,19 +88,9 @@ let pokemonRepository = (function () {
         console.error(e);
       })
     },
-    findPokemon: function(pokemon){
-      pokemonList.forEach(function(pokemonItem){
-        pokemonItem.filter(pokemonItems => pokemonItems.name === pokemon)
-      })
-    },
     getAll: function() {
       return pokemonList;
     },
-    findPokemon: function(pokemon){
-      pokemonList.forEach(function(pokemonItem){
-        pokemonItem.filter(pokemonItems => pokemonItems.name === pokemon)
-      })
-    }
   };
 })();
 
