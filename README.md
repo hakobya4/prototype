@@ -15,11 +15,12 @@ To build a small web application with HTML, CSS, and JavaScript that loads data 
 ## Features
 - This app loads data from an external source (API)
 - This app allows a user to view a list of 150 Pokemon
-- On user action (i.e., by clicking on a list of Pokemon), the user can view details for that Pokemon
+- On user action (i.e., by clicking on a list of Pokemon), the user can view details for that Pokemon.
+- This app allows users to search and filter the Pokemon list.
 
 ## Screenshots
 
-<img src ="https://github.com/hakobya4/prototype/assets/108638724/4670b1b4-7794-4064-a67f-5b1634f03a4e" width="600" height="300"/>
+<img src ="https://github.com/hakobya4/prototype/assets/108638724/9f6c2528-b351-495a-963d-09fe8909cf0d" width="600" height="300"/>
 <img src ="https://github.com/hakobya4/prototype/assets/108638724/26a4af38-57b0-4fa4-88c3-0081bb4470e4" width="600" height="300"/>
 
 ## Technical_Requirements
