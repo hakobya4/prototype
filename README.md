@@ -20,7 +20,7 @@ To build a small web application with HTML, CSS, and JavaScript that loads data 
 
 ## Screenshots
 
-<img src ="https://github.com/hakobya4/prototype/assets/108638724/9f6c2528-b351-495a-963d-09fe8909cf0d" width="600" height="300"/>
+<img src ="https://github.com/hakobya4/prototype/assets/108638724/dfe5d0c6-3cb4-43fc-9632-71911583464c" width="600" height="300"/>
 <img src ="https://github.com/hakobya4/prototype/assets/108638724/26a4af38-57b0-4fa4-88c3-0081bb4470e4" width="600" height="300"/>
 
 ## Technical_Requirements
